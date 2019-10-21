@@ -3,7 +3,7 @@
 'use strict';
 
 const Hapi = require('@hapi/hapi');
-
+const Joi = require('@hapi/joi');
 const server = Hapi.server({
     port: 3000,
     host: 'localhost'
@@ -11,11 +11,26 @@ const server = Hapi.server({
 
 server.route({
     method: 'GET',
-    path: '/hello',
+    path: '/',
     handler: (request, reply) => {
         return 'I am hello';
     }
 });
+
+server.route({  
+    method: 'POST',
+    path: '/req',
+    config: {
+      validate: {
+        payload: { 
+          password: Joi.string().min(6).max(200).required()
+        }
+      }
+    },
+     handler: (request, reply) => {
+                return 'I am hello';
+            }
+  })
 
 const main = async () => {
     // register the plugin
