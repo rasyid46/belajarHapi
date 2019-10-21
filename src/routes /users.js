@@ -15,6 +15,19 @@ exports.plugin = {
                     return h.response(data).code(200)
                 }
             },
+            {
+                    method: 'POST',
+                    path: basePath + 'details',
+                   handler: (request, h) => { 
+        console.log(request.payload);      
+                        let startRequest= request.payload.start;
+                        let endRequest= request.payload.end;
+                        let hasil = parseInt (startRequest) + parseInt (endRequest)
+                        const data =                { data: 'hello detail users',...request.payload,hasil: hasil }
+                        return h.response(data).code(200)
+
+                    }
+                },
             {
                 method: 'GET',
                 path: basePath + 'users/{id}',
@@ -28,10 +41,24 @@ exports.plugin = {
                         }
                     }
                 },
-                handler: (request, h) => {
+                handler: (request, h) => { 
+                    console.log(request.params);
                     return 'Hello from user ' + request.params.id;
                 }
-            }
+            }, 
+{
+                    method: 'POST',
+                    path: basePath + 'register',
+                   handler: (request, h) => { 
+        console.log(request.payload);      
+                        let startRequest= request.payload.start;
+                        let endRequest= request.payload.end;
+                        let hasil = parseInt (startRequest) + parseInt (endRequest)
+                        const data =                { data: 'hello user Register',...request.payload,hasil: hasil }
+                        return h.response(data).code(200)
+
+                    }
+                }, 
         ]);
     }
 };
