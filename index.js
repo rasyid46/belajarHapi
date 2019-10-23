@@ -33,7 +33,19 @@ server.route({
          let panjangRequest= request.payload.panjang;
          let lebarRequest= request.payload.lebar;
          let hasil = parseInt (panjangRequest) * parseInt (lebarRequest)
-         const data =                { data: 'hello detail users',...request.payload,hasil: hasil }
+         const contentData =                { 
+                      data: 'hello detail users',
+                      panjang: panjangRequest,
+                      lebar : lebarRequest,
+                      hasil: hasil 
+         }
+
+         const data = {
+           statusCode : 200,
+           error : "",
+           message : "Hitung luas persegi",
+           content : contentData 
+         }
         return h.response(data).code(200)
     }
   })
