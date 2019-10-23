@@ -1,11 +1,11 @@
 // index.js
 
 'use strict';
-
+require("dotenv").config(); 
 const Hapi = require('@hapi/hapi');
 const Joi = require('@hapi/joi');
 const server = Hapi.server({
-    port: 3000,
+    port:process.env.NODE_PORT,
     host: 'localhost'
 })
 
