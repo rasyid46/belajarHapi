@@ -19,7 +19,7 @@ exports.plugin = {
                     method: 'POST',
                     path: basePath + 'details',
                    handler: (request, h) => { 
-        console.log(request.payload);      
+                     console.log(request.payload);      
                         let startRequest= request.payload.start;
                         let endRequest= request.payload.end;
                         let hasil = parseInt (startRequest) + parseInt (endRequest)

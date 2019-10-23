@@ -23,7 +23,8 @@ server.route({
     config: {
       validate: {
         payload: { 
-          password: Joi.string().min(6).max(200).required()
+          password: Joi.string().min(6).max(200).required(),
+          start: Joi.number().min(1).required()
         }
       }
     },
