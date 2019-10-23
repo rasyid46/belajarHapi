@@ -1,6 +1,5 @@
 'use strict';
 const Joi = require('@hapi/joi');
-
 exports.plugin = {
     pkg: require('../../package.json'),
     name: 'route-books',
