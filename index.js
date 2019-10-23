@@ -19,18 +19,23 @@ server.route({
 
 server.route({  
     method: 'POST',
-    path: '/req',
+    path: '/persegi',
     config: {
       validate: {
         payload: { 
-          password: Joi.string().min(6).max(200).required(),
-          start: Joi.number().min(1).required()
+          panjang: Joi.number().min(1).required(),
+          lebar: Joi.number().min(1).required()
         }
       }
     },
-     handler: (request, reply) => {
-                return 'I am hello';
-            }
+    handler: (request, h) => { 
+         console.log(request.payload);      
+         let panjangRequest= request.payload.panjang;
+         let lebarRequest= request.payload.lebar;
+         let hasil = parseInt (panjangRequest) * parseInt (lebarRequest)
+         const data =                { data: 'hello detail users',...request.payload,hasil: hasil }
+        return h.response(data).code(200)
+    }
   })
 
 const main = async () => {

@@ -17,17 +17,24 @@ exports.plugin = {
             },
             {
                     method: 'POST',
-                    path: basePath + 'details',
-                   handler: (request, h) => { 
+                    path: basePath + 'persegi',
+                    config: {
+                        validate: {
+                        payload: { 
+                            panjang: Joi.string().min(1).required(),
+                            lebar: Joi.number().min(1).required()
+                        },
+                        }
+                    },
+                     handler: (request, h) => { 
                      console.log(request.payload);      
-                        let startRequest= request.payload.start;
-                        let endRequest= request.payload.end;
-                        let hasil = parseInt (startRequest) + parseInt (endRequest)
+                        let panjangRequest= request.payload.panjang;
+                        let lebarRequest= request.payload.lebar;
+                        let hasil = parseInt (panjangRequest) * parseInt (lebarRequest)
                         const data =                { data: 'hello detail users',...request.payload,hasil: hasil }
                         return h.response(data).code(200)
-
-                    }
-                },
+                }
+            },
             {
                 method: 'GET',
                 path: basePath + 'users/{id}',
@@ -42,13 +49,10 @@ exports.plugin = {
                     }
                 },
                 handler: (request, h) => { 
-                    console.log(request.params);
-                    return 'Hello from user ' + request.params.id;
+                    return 'Hello from user ' + request.params.id+' Parameter Page = '+ request.query.page;
                 }
-            }, 
+            }
         ]);
     }
 };
 
-
- 
