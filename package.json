@@ -2,10 +2,10 @@
   "name": "belajarhapi",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "node test.js"
+    "start": "node main.js",
+    "test": "node main.js"
   },
   "author": "",
   "license": "ISC",
