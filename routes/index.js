@@ -1,6 +1,6 @@
 const Models = require('../models/index')
 const todos = require('../models/todo');
-module.exports = [].concat(todos);
+// module.exports = [].concat(todos);
 const todosHandler = async (request, h) => {
     try {
         const todos = await Models.Todo.findAll({})
@@ -10,13 +10,16 @@ const todosHandler = async (request, h) => {
     }
 }
 
+
+
 const createTodoHandler = async (request, h) => {
     try {
-        const { title, description } = request.payload;
+        const { title, description, userId } = request.payload;
         console.log(request.payload);
         const todo = await Models.Todo.create({
             title: title,
-            description: description
+            description: description,
+            userId:userId
         })
         return {
             data: todo,
@@ -76,9 +79,12 @@ const deleteTodoHandler = async (request, h) => {
     }
 }
 
+
+
 module.exports = [
     { method: 'GET', path: '/todos', handler: todosHandler },
     { method: 'POST', path: '/todo', handler: createTodoHandler },
     { method: 'PUT', path: '/todo/{id}', handler: updateTodoHandler },
-    { method: 'DELETE', path: '/todo/{id}', handler: deleteTodoHandler }
+    { method: 'DELETE', path: '/todo/{id}', handler: deleteTodoHandler },
+
 ];

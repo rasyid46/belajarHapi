@@ -6,7 +6,10 @@ const server = Hapi.server({
 });
  
 const routes = require('./routes');
+const routesUser = require('./routes/userRoute');
+const Joi = require('@hapi/joi');
 server.route(routes);
+server.route(routesUser);
  
 const init = async () => { 
  
