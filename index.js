@@ -6,7 +6,7 @@ const Hapi = require('@hapi/hapi');
 const Joi = require('@hapi/joi');
 const server = Hapi.server({
     port:process.env.NODE_PORT,
-    host: 'localhost'
+    host: 'https://geeks-api.herokuapp.com/'
 })
 
 server.route({
