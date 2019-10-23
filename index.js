@@ -6,7 +6,7 @@ const Hapi = require('@hapi/hapi');
 const Joi = require('@hapi/joi');
 const server = Hapi.server({
     port:process.env.NODE_PORT || 3000,
-    host: process.env.NODE_HOST || '0.0.0.0'
+    host: process.env.NODE_HOST || 'localhost'
 })
 
  
